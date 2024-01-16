@@ -1,0 +1,26 @@
+digraph "ContextMapGraph" {
+graph ["imagepath"="/tmp/GraphvizJava"]
+"GestionDeAlquileres" ["margin"="0.3","orientation"="169","shape"="egg","fontsize"="16","style"="bold","label"="GestionDeAlquileres\n","fontname"="sans-serif"]
+"GestionDeClientes" ["margin"="0.3","orientation"="346","shape"="egg","fontsize"="16","style"="bold","label"="GestionDeClientes\n","fontname"="sans-serif"]
+"GestiondeSeguridad" ["margin"="0.3","orientation"="122","shape"="egg","fontsize"="16","style"="bold","label"="GestiondeSeguridad\n","fontname"="sans-serif"]
+"GestionDeVehiculos" ["margin"="0.3","orientation"="271","shape"="egg","fontsize"="16","style"="bold","label"="GestionDeVehiculos\n","fontname"="sans-serif"]
+"GestionDePagos" ["margin"="0.3","orientation"="339","shape"="egg","fontsize"="16","style"="bold","label"="GestionDePagos\n","fontname"="sans-serif"]
+"PaymentGateway" ["margin"="0.3","orientation"="123","shape"="egg","fontsize"="16","style"="bold","label"="PaymentGateway\n","fontname"="sans-serif"]
+"ServicioDeGeocalizacion" ["margin"="0.3","orientation"="219","shape"="egg","fontsize"="16","style"="bold","label"="ServicioDeGeocalizacion\n","fontname"="sans-serif"]
+"GestionDeAlquileres" -> "GestionDeClientes" ["headlabel"=<<table cellspacing="0" cellborder="0" border="0">
+<tr><td bgcolor="white">D</td></tr>
+</table>>,"labeldistance"="0","fontsize"="12","taillabel"=<<table cellspacing="0" cellborder="0" border="0">
+<tr><td bgcolor="white">U</td></tr>
+</table>>,"style"="bold","label"="                                        ","dir"="none","fontname"="sans-serif"]
+"GestionDeAlquileres" -> "GestionDeClientes" ["fontsize"="12","style"="bold","label"="Shared Kernel","dir"="none","fontname"="sans-serif"]
+"GestionDeAlquileres" -> "GestionDeVehiculos" ["fontsize"="12","style"="bold","label"="Shared Kernel","dir"="none","fontname"="sans-serif"]
+"GestionDeAlquileres" -> "GestionDePagos" ["fontsize"="12","style"="bold","label"="Shared Kernel","dir"="none","fontname"="sans-serif"]
+"GestionDeClientes" -> "GestiondeSeguridad" ["fontsize"="12","style"="bold","label"="Shared Kernel","dir"="none","fontname"="sans-serif"]
+"GestionDePagos" -> "PaymentGateway" ["headlabel"=<<table cellspacing="0" cellborder="0" border="0">
+<tr><td bgcolor="white">D</td></tr>
+</table>>,"labeldistance"="0","fontsize"="12","taillabel"=<<table cellspacing="0" cellborder="0" border="0">
+<tr><td bgcolor="white">U</td></tr>
+</table>>,"style"="bold","label"="                                        ","dir"="none","fontname"="sans-serif"]
+"GestionDePagos" -> "GestionDeClientes" ["fontsize"="12","style"="bold","label"="Shared Kernel","dir"="none","fontname"="sans-serif"]
+"ServicioDeGeocalizacion" -> "GestiondeSeguridad" ["fontsize"="12","style"="bold","label"="Shared Kernel","dir"="none","fontname"="sans-serif"]
+}

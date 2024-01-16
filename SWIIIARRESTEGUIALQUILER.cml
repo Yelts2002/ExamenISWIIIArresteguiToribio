@@ -1,0 +1,72 @@
+/* Example Context Map written with 'ContextMapper DSL' */ 
+
+ContextMap SWIIIARRESTEGUIALQUILER { 
+
+    type = SYSTEM_LANDSCAPE 
+
+    state = TO_BE   
+
+    /* Add bounded contexts to this context map: */ 
+
+    contains GestionDeAlquileres
+    contains GestionDeClientes
+    contains GestionDeVehiculos
+    contains GestionDePagos
+    contains PaymentGateway
+    contains ServicioDeGeocalizacion
+    contains GestiondeSeguridad
+
+    /* Define the context relationships: */  
+    GestionDeClientes <- GestionDeAlquileres 
+    GestionDeAlquileres <-> GestionDeVehiculos
+    GestionDeAlquileres <-> GestionDePagos
+    GestionDeAlquileres <-> GestionDeClientes
+    GestionDePagos <-> GestionDeClientes
+    GestionDeClientes <-> GestiondeSeguridad
+    PaymentGateway <- GestionDePagos
+    ServicioDeGeocalizacion <-> GestiondeSeguridad
+
+} 
+
+ 
+BoundedContext GestionDePagos implements GestionDeAlquileres
+BoundedContext GestionDeAlquileres implements GestionDeVehiculos
+BoundedContext GestionDeVehiculos implements GestionDeAlquileres
+BoundedContext PaymentGateway implements GestionDePagos
+BoundedContext ServicioDeGeocalizacion implements GestiondeSeguridad
+BoundedContext GestionDeClientes implements GestiondeSeguridad
+BoundedContext GestiondeSeguridad implements GestionDeClientes
+
+     
+
+Domain InsuranceDomain { 
+    Subdomain GestionDeAlquileres { 
+        type = CORE_DOMAIN 
+    } 
+
+    Subdomain GestionDeClientes { 
+        type = SUPPORTING_DOMAIN 
+    } 
+
+    Subdomain GestionDeVehiculos { 
+        type = SUPPORTING_DOMAIN 
+    } 
+
+    Subdomain GestionDePagos { 
+        type = SUPPORTING_DOMAIN 
+    } 
+
+    Subdomain PaymentGateway { 
+        type = GENERIC_SUBDOMAIN 
+    } 
+
+    Subdomain ServicioDeGeocalizacion { 
+        type = GENERIC_SUBDOMAIN 
+    } 
+
+    Subdomain GestiondeSeguridad{
+        type = GENERIC_SUBDOMAIN
+    }
+
+
+} 
